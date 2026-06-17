@@ -1,0 +1,637 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#"
+     xml:base="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2"
+     xmlns:ex="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2/"
+     xmlns:geo="http://www.opengis.net/ont/geosparql#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:time="http://www.w3.org/2006/time#"
+     xmlns:qudt="http://qudt.org/schema/qudt/"
+     xmlns:unit="http://qudt.org/vocab/unit/"
+     xmlns:quantitykind="http://qudt.org/vocab/quantitykind/">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2">
+        <owl:imports rdf:resource="http://qudt.org/2.1/schema/qudt"/>
+        <owl:imports rdf:resource="http://qudt.org/2.1/vocab/unit"/>
+        <owl:imports rdf:resource="http://qudt.org/2.1/vocab/quantitykind"/>
+        <owl:imports rdf:resource="http://www.w3.org/2006/time"/>
+        <owl:versionInfo xml:lang="en">2026-06-17: Added QUDT (qudt:QuantityValue / qudt:numericValue / qudt:unit / qudt:hasQuantityKind) alignment for depthValue, velocityValue and resolution, and W3C Time Ontology (time:Instant / time:ProperInterval / time:hasBeginning / time:hasEnd / time:inXSDDateTime) alignment for TimeInstant and TimeInterval. All additions are additive: existing classes, properties, domains and ranges used by the deployed SPARQL query templates are unchanged.</owl:versionInfo>
+    </owl:Ontology>
+
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2000/01/rdf-schema#comment"/>
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2000/01/rdf-schema#label"/>
+
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+
+    <!-- http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#affects -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#affects">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#FloodSituation"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#SpatialUnit"/>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#continuesAs -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#continuesAs">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#FloodUnitState"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#FloodUnitState"/>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#derivedFromCoverage -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#derivedFromCoverage">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#Observation"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#GeoCoverage"/>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#derivedFromState -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#derivedFromState">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#FloodEvent"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#FloodUnitState"/>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#hasBeginning -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#hasBeginning">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#TimeInterval"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#TimeInstant"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2006/time#hasBeginning"/>
+        <rdfs:comment xml:lang="en">Aligned with the W3C Time Ontology as a sub-property of time:hasBeginning. Existing ex:hasBeginning triples are unchanged; RDFS reasoning over this axiom additionally entails the equivalent time:hasBeginning triple.</rdfs:comment>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#hasEnd -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#hasEnd">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#TimeInterval"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#TimeInstant"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2006/time#hasEnd"/>
+        <rdfs:comment xml:lang="en">Aligned with the W3C Time Ontology as a sub-property of time:hasEnd. Existing ex:hasEnd triples are unchanged; RDFS reasoning over this axiom additionally entails the equivalent time:hasEnd triple.</rdfs:comment>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://www.opengis.net/ont/geosparql#hasGeometry -->
+
+    <owl:ObjectProperty rdf:about="http://www.opengis.net/ont/geosparql#hasGeometry">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#SpatialUnit"/>
+        <rdfs:range rdf:resource="http://www.opengis.net/ont/geosparql#Geometry"/>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#hasObservation -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#hasObservation">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#FloodUnitState"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#Observation"/>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#hasTime -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#hasTime">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#FloodSituation"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#TimeInterval"/>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#hasQuantityValue -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#hasQuantityValue">
+        <rdfs:range rdf:resource="http://qudt.org/schema/qudt/QuantityValue"/>
+        <rdfs:comment xml:lang="en">Bridge property linking a measurement-bearing individual (a DepthObservation, VelocityObservation, or GeoCoverage) to its QUDT-compliant qudt:QuantityValue representation (qudt:numericValue + qudt:unit + qudt:hasQuantityKind). Deliberately left without an rdfs:domain restriction so it can be reused across all three measurement-bearing classes without forcing an artificial common superclass. This property is additive documentation/interoperability scaffolding; the deployed SPARQL query templates continue to read the scalar literal properties (depthValue, velocityValue, resolution) directly.</rdfs:comment>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#impacts -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#impacts">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#FloodEvent"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#SpatialUnit"/>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#involves -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#involves">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#FloodSituation"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#FloodEvent"/>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#occursAt -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#occursAt">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#FloodUnitState"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#FloodEvent"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#TimeInstant"/>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#ofUnit -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#ofUnit">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#FloodUnitState"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#SpatialUnit"/>
+    </owl:ObjectProperty>
+
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // QUDT Object Properties (reused, declared locally so the file is self-contained
+    // even if the owl:imports targets above are not resolved)
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+    <!-- http://qudt.org/schema/qudt/unit -->
+
+    <owl:ObjectProperty rdf:about="http://qudt.org/schema/qudt/unit">
+        <rdfs:label xml:lang="en">unit</rdfs:label>
+        <rdfs:domain rdf:resource="http://qudt.org/schema/qudt/QuantityValue"/>
+        <rdfs:range rdf:resource="http://qudt.org/schema/qudt/Unit"/>
+        <rdfs:comment xml:lang="en">Local stub declaration of the standard QUDT property qudt:unit, reused from http://qudt.org/2.1/schema/qudt.</rdfs:comment>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://qudt.org/schema/qudt/hasQuantityKind -->
+
+    <owl:ObjectProperty rdf:about="http://qudt.org/schema/qudt/hasQuantityKind">
+        <rdfs:label xml:lang="en">has quantity kind</rdfs:label>
+        <rdfs:domain rdf:resource="http://qudt.org/schema/qudt/QuantityValue"/>
+        <rdfs:range rdf:resource="http://qudt.org/schema/qudt/QuantityKind"/>
+        <rdfs:comment xml:lang="en">Local stub declaration of the standard QUDT property qudt:hasQuantityKind, reused from http://qudt.org/2.1/schema/qudt.</rdfs:comment>
+    </owl:ObjectProperty>
+
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+
+    <!-- http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#depthValue -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#depthValue">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#DepthObservation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment xml:lang="en">Scalar flood-depth magnitude in meters, read directly by the deployed SPARQL query templates. QUDT-aligned via the complementary ex:hasQuantityValue link to a qudt:QuantityValue individual typed quantitykind:Length with qudt:unit unit:M.</rdfs:comment>
+    </owl:DatatypeProperty>
+
+
+
+    <!-- http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#eventID -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#eventID">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#FloodEvent"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+
+
+    <!-- http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#eventType -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#eventType">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#FloodEvent"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+
+
+    <!-- http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#fileName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#fileName">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#GeoCoverage"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+
+
+    <!-- http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#resolution -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#resolution">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#GeoCoverage"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Raster pixel resolution, currently exported as a string literal (e.g. "30.0"). Conceptually a Length quantity in meters; QUDT-aligned via the complementary ex:hasQuantityValue link to a qudt:QuantityValue individual typed quantitykind:Length with qudt:unit unit:M. The xsd:string range is left unchanged here to avoid breaking compatibility with already-exported coverage.ttl literals; retyping to xsd:float is a separate, non-additive change.</rdfs:comment>
+    </owl:DatatypeProperty>
+
+
+
+    <!-- http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#severityLevel -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#severityLevel">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#FloodUnitState"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+
+
+    <!-- http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#situationID -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#situationID">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#FloodSituation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+
+
+    <!-- http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#stateID -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#stateID">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#FloodUnitState"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+
+
+    <!-- http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#timestamp -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#timestamp">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#TimeInstant"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2006/time#inXSDDateTime"/>
+        <rdfs:comment xml:lang="en">Aligned with the W3C Time Ontology as a sub-property of time:inXSDDateTime. Existing ex:timestamp triples are unchanged; RDFS reasoning over this axiom additionally entails the equivalent time:inXSDDateTime triple.</rdfs:comment>
+    </owl:DatatypeProperty>
+
+
+
+    <!-- http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#type -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#type">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#SpatialUnit"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+
+
+    <!-- http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#unitID -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#unitID">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#SpatialUnit"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+
+
+    <!-- http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#velocityValue -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#velocityValue">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#VelocityObservation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment xml:lang="en">Scalar flood-velocity magnitude in meters per second, read directly by the deployed SPARQL query templates. QUDT-aligned via the complementary ex:hasQuantityValue link to a qudt:QuantityValue individual typed quantitykind:Velocity with qudt:unit unit:M-PER-SEC.</rdfs:comment>
+    </owl:DatatypeProperty>
+
+
+    <!-- http://www.opengis.net/ont/geosparql#asWKT -->
+
+    <owl:DatatypeProperty rdf:about="http://www.opengis.net/ont/geosparql#asWKT">
+        <rdfs:domain rdf:resource="http://www.opengis.net/ont/geosparql#Geometry"/>
+        <rdfs:range rdf:resource="http://www.opengis.net/ont/geosparql#wktLiteral"/>
+    </owl:DatatypeProperty>
+
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // QUDT Data Properties (reused, declared locally so the file is self-contained
+    // even if the owl:imports targets above are not resolved)
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+    <!-- http://qudt.org/schema/qudt/numericValue -->
+
+    <owl:DatatypeProperty rdf:about="http://qudt.org/schema/qudt/numericValue">
+        <rdfs:label xml:lang="en">numeric value</rdfs:label>
+        <rdfs:domain rdf:resource="http://qudt.org/schema/qudt/QuantityValue"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+        <rdfs:comment xml:lang="en">Local stub declaration of the standard QUDT property qudt:numericValue, reused from http://qudt.org/2.1/schema/qudt.</rdfs:comment>
+    </owl:DatatypeProperty>
+
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+
+    <!-- http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#DepthObservation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#DepthObservation">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#Observation"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#FloodEvent -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#FloodEvent"/>
+
+
+
+    <!-- http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#FloodSituation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#FloodSituation"/>
+
+
+
+    <!-- http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#FloodUnitState -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#FloodUnitState"/>
+
+
+
+    <!-- http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#GeoCoverage -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#GeoCoverage"/>
+
+
+
+    <!-- http://www.opengis.net/ont/geosparql#Geometry -->
+
+    <owl:Class rdf:about="http://www.opengis.net/ont/geosparql#Geometry"/>
+
+
+
+    <!-- http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#Observation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#Observation"/>
+
+
+
+    <!-- http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#SpatialUnit -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#SpatialUnit">
+        <rdfs:subClassOf rdf:resource="http://www.opengis.net/ont/geosparql#Feature"/>
+    </owl:Class>
+
+
+    <!-- http://www.opengis.net/ont/geosparql#Feature -->
+
+    <owl:Class rdf:about="http://www.opengis.net/ont/geosparql#Feature"/>
+
+
+
+    <!-- http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#TimeInstant -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#TimeInstant">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#Instant"/>
+        <rdfs:comment xml:lang="en">Aligned with the W3C Time Ontology as a sub-class of time:Instant. Existing ex:TimeInstant instance data and the deployed SPARQL templates are unaffected.</rdfs:comment>
+    </owl:Class>
+
+
+
+    <!-- http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#TimeInterval -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#TimeInterval">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+        <rdfs:comment xml:lang="en">Aligned with the W3C Time Ontology as a sub-class of time:ProperInterval (an interval with distinct, non-equal beginning and end), since every ex:TimeInterval in the KG is bounded by two distinct ex:TimeInstant individuals via ex:hasBeginning/ex:hasEnd. Existing ex:TimeInterval instance data and the deployed SPARQL templates are unaffected.</rdfs:comment>
+    </owl:Class>
+
+
+
+    <!-- http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#VelocityObservation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#VelocityObservation">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/maith/ontologies/2026/2/untitled-ontology-2#Observation"/>
+    </owl:Class>
+
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // QUDT Classes (reused, declared locally so the file is self-contained
+    // even if the owl:imports targets above are not resolved)
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+    <!-- http://qudt.org/schema/qudt/QuantityValue -->
+
+    <owl:Class rdf:about="http://qudt.org/schema/qudt/QuantityValue">
+        <rdfs:label xml:lang="en">Quantity Value</rdfs:label>
+        <rdfs:comment xml:lang="en">Local stub declaration of the standard QUDT class qudt:QuantityValue, reused from http://qudt.org/2.1/schema/qudt. An individual of this class pairs a qudt:numericValue with a qudt:unit and a qudt:hasQuantityKind.</rdfs:comment>
+    </owl:Class>
+
+
+
+    <!-- http://qudt.org/schema/qudt/Unit -->
+
+    <owl:Class rdf:about="http://qudt.org/schema/qudt/Unit">
+        <rdfs:label xml:lang="en">Unit</rdfs:label>
+        <rdfs:comment xml:lang="en">Local stub declaration of the standard QUDT class qudt:Unit, reused from http://qudt.org/2.1/schema/qudt.</rdfs:comment>
+    </owl:Class>
+
+
+
+    <!-- http://qudt.org/schema/qudt/QuantityKind -->
+
+    <owl:Class rdf:about="http://qudt.org/schema/qudt/QuantityKind">
+        <rdfs:label xml:lang="en">Quantity Kind</rdfs:label>
+        <rdfs:comment xml:lang="en">Local stub declaration of the standard QUDT class qudt:QuantityKind, reused from http://qudt.org/2.1/schema/qudt.</rdfs:comment>
+    </owl:Class>
+
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // W3C Time Ontology Classes and Properties (reused, declared locally so the file is
+    // self-contained even if the owl:imports target above is not resolved)
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+    <!-- http://www.w3.org/2006/time#TemporalEntity -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#TemporalEntity">
+        <rdfs:label xml:lang="en">Temporal Entity</rdfs:label>
+    </owl:Class>
+
+
+
+    <!-- http://www.w3.org/2006/time#Instant -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#Instant">
+        <rdfs:label xml:lang="en">Instant</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
+        <rdfs:comment xml:lang="en">Local stub declaration of the standard W3C Time Ontology class time:Instant, reused from http://www.w3.org/2006/time.</rdfs:comment>
+    </owl:Class>
+
+
+
+    <!-- http://www.w3.org/2006/time#Interval -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#Interval">
+        <rdfs:label xml:lang="en">Interval</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
+        <rdfs:comment xml:lang="en">Local stub declaration of the standard W3C Time Ontology class time:Interval, reused from http://www.w3.org/2006/time.</rdfs:comment>
+    </owl:Class>
+
+
+
+    <!-- http://www.w3.org/2006/time#ProperInterval -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#ProperInterval">
+        <rdfs:label xml:lang="en">Proper Interval</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#Interval"/>
+        <rdfs:comment xml:lang="en">Local stub declaration of the standard W3C Time Ontology class time:ProperInterval (an interval with distinct beginning and end), reused from http://www.w3.org/2006/time.</rdfs:comment>
+    </owl:Class>
+
+
+
+    <!-- http://www.w3.org/2006/time#hasBeginning -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#hasBeginning">
+        <rdfs:label xml:lang="en">has beginning</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#Instant"/>
+        <rdfs:comment xml:lang="en">Local stub declaration of the standard W3C Time Ontology property time:hasBeginning, reused from http://www.w3.org/2006/time.</rdfs:comment>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://www.w3.org/2006/time#hasEnd -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#hasEnd">
+        <rdfs:label xml:lang="en">has end</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#Instant"/>
+        <rdfs:comment xml:lang="en">Local stub declaration of the standard W3C Time Ontology property time:hasEnd, reused from http://www.w3.org/2006/time.</rdfs:comment>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://www.w3.org/2006/time#inXSDDateTime -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#inXSDDateTime">
+        <rdfs:label xml:lang="en">in XSD dateTime</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.w3.org/2006/time#Instant"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment xml:lang="en">Local stub declaration of the standard W3C Time Ontology property time:inXSDDateTime, reused from http://www.w3.org/2006/time.</rdfs:comment>
+    </owl:DatatypeProperty>
+
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // QUDT/W3C-Time Named Individuals: units and quantity kinds reused by
+    // ex:hasQuantityValue instance data (qudt:QuantityValue nodes)
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+    <!-- http://qudt.org/vocab/unit/M -->
+
+    <owl:NamedIndividual rdf:about="http://qudt.org/vocab/unit/M">
+        <rdf:type rdf:resource="http://qudt.org/schema/qudt/Unit"/>
+        <rdfs:label xml:lang="en">Meter</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://qudt.org/vocab/unit/M-PER-SEC -->
+
+    <owl:NamedIndividual rdf:about="http://qudt.org/vocab/unit/M-PER-SEC">
+        <rdf:type rdf:resource="http://qudt.org/schema/qudt/Unit"/>
+        <rdfs:label xml:lang="en">Meter per Second</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://qudt.org/vocab/quantitykind/Length -->
+
+    <owl:NamedIndividual rdf:about="http://qudt.org/vocab/quantitykind/Length">
+        <rdf:type rdf:resource="http://qudt.org/schema/qudt/QuantityKind"/>
+        <rdfs:label xml:lang="en">Length</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://qudt.org/vocab/quantitykind/Velocity -->
+
+    <owl:NamedIndividual rdf:about="http://qudt.org/vocab/quantitykind/Velocity">
+        <rdf:type rdf:resource="http://qudt.org/schema/qudt/QuantityKind"/>
+        <rdfs:label xml:lang="en">Velocity</rdfs:label>
+    </owl:NamedIndividual>
+
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+<!-- QUDT and W3C Time Ontology alignment added 2026-06-17 (additive revision; see owl:versionInfo). -->
