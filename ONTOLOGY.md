@@ -7,7 +7,7 @@ alignment added on top of the original lightweight schema. The machine-readable 
 
 ## Diagram
 
-![ST-FKG Ontology diagram](./Median%20Value%20Decision%20Tree-2026-06-17-123036.png)
+![ST-FKG Ontology diagram](ontology/ontology.png)
 
 ## 1. Design philosophy
 
