@@ -57,19 +57,23 @@ Three design decisions shape everything in this repo:
 
 ```
 .
-├── README.md            ← you are here
+├── README.md             ← you are here
 ├── ONTOLOGY.md           ← full ontology documentation: classes, properties, design rationale
 ├── ontology/
 │   ├── stfkg_ontology.rdf   ← the machine-readable ontology itself (OWL/XML)
 │   └── ontology.png          ← class/property diagram referenced from ONTOLOGY.md
 ├── templates.md           ← index and shared reference for the SPARQL query template library
-└── templates/
-    ├── S-series.md        ← State queries      — flood-state retrieval for a unit/time
-    ├── T-series.md        ← Temporal queries    — arrival, recession, duration, full timeline
-    ├── A-series.md        ← Aggregate queries   — ranking and counting across many units
-    ├── E-series.md        ← Event queries       — named flood-event occurrence and history
-    ├── R-series.md        ← Risk queries        — hazardous velocity / critical-infrastructure exposure
-    └── D-series.md        ← Decision queries    — evacuation and intervention prioritization
+├── templates/
+│   ├── S-series.md        ← State queries      — flood-state retrieval for a unit/time
+│   ├── T-series.md        ← Temporal queries    — arrival, recession, duration, full timeline
+│   ├── A-series.md        ← Aggregate queries   — ranking and counting across many units
+│   ├── E-series.md        ← Event queries       — named flood-event occurrence and history
+│   ├── R-series.md        ← Risk queries        — hazardous velocity / critical-infrastructure exposure
+│   └── D-series.md        ← Decision queries    — evacuation and intervention prioritization
+└── walkthroughs/
+    ├── README.md                  ← the classification pipeline + how confidence is assigned
+    ├── example-rules-based.md     ← canonical query traced through the deterministic rule path
+    └── example-llm-paraphrase.md  ← paraphrased query traced through the LLM fallback path
 ```
 
 ### `ONTOLOGY.md` and `ontology/`
@@ -94,6 +98,22 @@ invented numbers. Each of the six `templates/*-series.md` files documents one qu
 full: every template's purpose, its required/optional parameters, the literal phrases that
 trigger deterministic (no-LLM) classification, the raw SPARQL with its `{PARAM}` placeholders,
 and a fully worked example with real entity IDs.
+
+### `walkthroughs/`
+
+[`walkthroughs/`](walkthroughs/) traces, step by step, how a natural-language question is
+classified into a template and how a confidence score is attached to that decision. Its
+[`README.md`](walkthroughs/README.md) explains the two-stage pipeline (deterministic rules
+first, LLM fallback second), the 0.75 confidence threshold, and the two distinct ways
+confidence is assigned (hardcoded per-rule constants vs. the model's self-report). The two
+example files trace the same duration question through both paths:
+[`example-rules-based.md`](walkthroughs/example-rules-based.md) for the canonical phrasing
+*"How long was Building_001 flooded?"* (matched by a deterministic rule, no LLM call), and
+[`example-llm-paraphrase.md`](walkthroughs/example-llm-paraphrase.md) for the paraphrase
+*"What period of inundation was sustained by Building_001?"* (no rule matches, so it falls
+through to the LLM). Both converge on the same template and answer, illustrating why
+classification only ever selects a template while the SPARQL itself is always generated
+deterministically.
 
 ## How the pieces fit together
 
